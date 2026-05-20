@@ -1,0 +1,310 @@
+{
+  "info": {
+    "_postman_id": "match-apis-collection",
+    "name": "Match APIs",
+    "description": "Complete collection for all Match-related endpoints",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Public Match Endpoints",
+      "description": "Public endpoints for fetching matches (no admin auth required)",
+      "item": [
+        {
+          "name": "Fetch All Upcoming Matches",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/user/match/fetchAll",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "user",
+                "match",
+                "fetchAll"
+              ]
+            },
+            "description": "Fetches all upcoming matches. Automatically marks expired matches as completed before returning results."
+          },
+          "response": []
+        },
+        {
+          "name": "Fetch Single Match",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"_id\": \"match_id_here\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/user/match/fetchSingle",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "user",
+                "match",
+                "fetchSingle"
+              ]
+            },
+            "description": "Fetches details for a single upcoming match. Returns match info with populated sport, venue, and team data."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Admin Match Management",
+      "description": "Admin endpoints for managing matches (requires authentication + admin role)",
+      "item": [
+        {
+          "name": "Add New Match",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{admin_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"sportId\": \"sport_id_here\",\n  \"venueId\": \"venue_id_here\",\n  \"matchName\": \"Cricket Match 2026\",\n  \"matchDate\": \"2026-05-15T18:00:00Z\",\n  \"matchTime\": \"6:00 PM\",\n  \"city\": \"New Delhi\",\n  \"description\": \"Exciting cricket match between two teams\",\n  \"team1Id\": \"team1_id_here\",\n  \"team2Id\": \"team2_id_here\",\n  \"totalSeats\": 100,\n  \"availableSeats\": 100,\n  \"ticketPrice\": 500,\n  \"maxApplications\": 10,\n  \"prizePool\": {\n    \"winner\": 50000,\n    \"runnerUp\": 30000\n  }\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/admin/match/add",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "admin",
+                "match",
+                "add"
+              ]
+            },
+            "description": "Creates a new match. Supports banner image upload. Requires admin authentication."
+          },
+          "response": []
+        },
+        {
+          "name": "Fetch All Matches (Admin)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{admin_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/admin/match/fetchAll",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "admin",
+                "match",
+                "fetchAll"
+              ]
+            },
+            "description": "Admin view: Fetches all matches including deleted ones. Requires admin authentication."
+          },
+          "response": []
+        },
+        {
+          "name": "Fetch Single Match (Admin)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{admin_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"_id\": \"match_id_here\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/admin/match/fetchSingle",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "admin",
+                "match",
+                "fetchSingle"
+              ]
+            },
+            "description": "Admin view: Fetches complete details of a single match. Requires admin authentication."
+          },
+          "response": []
+        },
+        {
+          "name": "Update Match",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{admin_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"_id\": \"match_id_here\",\n  \"matchName\": \"Updated Match Name\",\n  \"matchDate\": \"2026-05-20T18:00:00Z\",\n  \"matchTime\": \"6:30 PM\",\n  \"city\": \"Mumbai\",\n  \"description\": \"Updated description\",\n  \"ticketPrice\": 600,\n  \"totalSeats\": 120\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/admin/match/update",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "admin",
+                "match",
+                "update"
+              ]
+            },
+            "description": "Updates match details. Include _id and fields to be updated. Requires admin authentication."
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Match (Soft Delete)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{admin_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"_id\": \"match_id_here\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/admin/match/delete",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "admin",
+                "match",
+                "delete"
+              ]
+            },
+            "description": "Soft deletes a match (marks as deleted, doesn't remove from database). Requires admin authentication."
+          },
+          "response": []
+        },
+        {
+          "name": "Complete Match",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{admin_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"_id\": \"match_id_here\",\n  \"result\": \"Team1 won by 50 runs\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/admin/match/complete",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "admin",
+                "match",
+                "complete"
+              ]
+            },
+            "description": "Marks a match as completed with result details. Requires admin authentication."
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "admin_token",
+      "value": "",
+      "type": "string",
+      "description": "Admin JWT token for authentication"
+    }
+  ]
+}
