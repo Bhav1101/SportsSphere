@@ -107,7 +107,7 @@ export default function UserDashboard() {
                         recentBookings.map((booking) => (
                           <tr key={booking._id}>
                             <td>
-                              <div style={{ color: "#f8fafc", fontWeight: 600, fontSize: "0.84rem" }}>{booking.matchId?.matchName || "-"}</div>
+                              <div style={{ color: "#000000", fontWeight: 600, fontSize: "0.84rem" }}>{booking.matchId?.matchName || "-"}</div>
                               <div style={{ color: "#94a3b8", fontSize: "0.72rem" }}>{booking.matchId?.city || "-"}</div>
                             </td>
                             <td style={{ color: "#cbd5e1", fontSize: "0.78rem" }}>
