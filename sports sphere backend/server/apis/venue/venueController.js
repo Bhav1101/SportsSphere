@@ -57,7 +57,7 @@ const addVenue = async (req, res) => {
             state:         incomingData.state         || "",
             address:       incomingData.address       || "",
             totalCapacity: Number(incomingData.totalCapacity) || 0,
-            image:         req.file ? 'venues/' + req.file.filename : "",
+            image:         req.file ? req.file.path : "",
             sportIds:      incomingData.sportIds ? incomingData.sportIds.split(',') : [],
             createdBy:     req.decoded._id
         })
@@ -145,7 +145,7 @@ const updateVenue = async (req, res) => {
         if (incomingData.state)         venue.state         = incomingData.state
         if (incomingData.address)       venue.address       = incomingData.address
         if (incomingData.totalCapacity) venue.totalCapacity = Number(incomingData.totalCapacity)
-        if (req.file)                   venue.image         = 'venues/' + req.file.filename
+        if (req.file)                   venue.image         = req.file.path
 
         venue.updatedBy = req.decoded._id
         venue.updatedAt = Date.now()

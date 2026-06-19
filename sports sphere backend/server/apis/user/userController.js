@@ -157,7 +157,7 @@ const update = async (req, res) => {
         if(incomingData.contact) user.contact =incomingData.contact
 
         if(req.file){
-            user.profileImage='profiles/'+req.file.filename
+            user.profileImage=req.file.path
         }
         user.updatedAt =Date.now()
         let savedUser = await user.save()

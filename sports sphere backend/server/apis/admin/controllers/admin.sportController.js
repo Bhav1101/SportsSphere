@@ -42,7 +42,7 @@ const addSport = async (req, res) => {
             description:       incomingData.description || "",
             maxPlayersPerTeam: Number(incomingData.maxPlayersPerTeam),
             matchDuration:     Number(incomingData.matchDuration),
-            rules:             req.file ? 'sports/' + req.file.filename : "",
+            rules:             req.file ? req.file.path : "",
             createdBy:         req.decoded._id
         })
 
@@ -172,7 +172,7 @@ const updateSport = async (req, res) => {
                     if (err) console.log("Old file delete failed: ", err)
                 })
             }
-            sport.rules = 'sports/' + req.file.filename
+            sport.rules =  req.file.path
         }
 
         sport.updatedBy = req.decoded._id

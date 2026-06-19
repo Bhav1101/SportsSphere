@@ -30,7 +30,7 @@ const addPlayer = async (req, res) => {
             teamId:     incomingData.teamId,
             experience: Number(incomingData.experience) || 0,
             bio:        incomingData.bio                || "",
-            playerImg:  req.file ? 'players/' + req.file.filename : "",
+            playerImg:  req.file ? req.file.path : "",
             createdBy:  coachId
         })
         let savedPlayer = await newPlayer.save()
@@ -87,7 +87,7 @@ const updatePlayer = async (req, res) => {
 
         if (req.file) {
             if (player.playerImg) fs.unlink('server/public/' + player.playerImg, (err) => { if (err) console.log(err) })
-            player.playerImg = 'players/' + req.file.filename
+            player.playerImg =  req.file.path
         }
 
         player.updatedBy = coachId

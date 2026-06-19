@@ -108,7 +108,7 @@ const register = async (req, res) => {
             experienceYears:  Number(incomingData.experienceYears),
             bio:              incomingData.bio,
             sportsIds:        sportsIds,
-            document:         'documents/' + req.file.filename,
+            document:         req.file.path,
             status:           "pending",
             // pending until admin approves
             createdBy:        savedUser._id
@@ -261,7 +261,7 @@ const updateProfile = async (req, res) => {
 
         // update document if new file uploaded
         if (req.file) {
-            profile.document = 'documents/' + req.file.filename
+            profile.document = req.file.path
         }
 
         // reset status to pending after update

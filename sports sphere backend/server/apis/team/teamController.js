@@ -29,7 +29,7 @@ const createTeam = async (req, res) => {
             teamDesc:  incomingData.teamDesc || "",
             sportId:   incomingData.sportId,
             coachId:   coachId,
-            logo:      req.file ? 'teams/' + req.file.filename : "",
+            logo:     req.file ? req.file.path : "",
             createdBy: coachId
         })
         let savedTeam = await newTeam.save()
@@ -83,7 +83,7 @@ const updateTeam = async (req, res) => {
 
         if (req.file) {
             if (team.logo) fs.unlink('server/public/' + team.logo, (err) => { if (err) console.log(err) })
-            team.logo = 'teams/' + req.file.filename
+            team.logo = req.file.path
         }
 
         team.updatedBy = coachId

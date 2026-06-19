@@ -13,13 +13,14 @@
   "dependencies": {
     "@google/genai": "^1.50.1",
     "bcrypt": "^6.0.0",
-    "cloudinary": "^2.10.0",
+    "cloudinary": "^1.41.3",
     "cors": "^2.8.6",
     "dotenv": "^17.3.1",
     "express": "^5.2.1",
     "jsonwebtoken": "^9.0.3",
     "mongoose": "^9.3.3",
     "multer": "^2.1.1",
+    "multer-storage-cloudinary": "^4.0.0",
     "nodemon": "^3.1.14",
     "razorpay": "^2.9.6",
     "uuid": "^14.0.0"
