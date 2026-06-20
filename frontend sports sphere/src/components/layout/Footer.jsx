@@ -73,7 +73,7 @@ export default function Footer() {
                 </span>
                 <span>
                   <i className="bi bi-envelope me-2" />
-                  support@sportssphere.com
+                  bhavjot360@gmail.com
                 </span>
               </div>
               <div className="mt-3">

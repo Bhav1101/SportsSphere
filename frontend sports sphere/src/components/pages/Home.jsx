@@ -68,15 +68,15 @@ export default function Home() {
             <div className="col-lg-7">
               <span className="hero-tag">
                 <i className="bi bi-stars" />
-                Discover and book live sports
+                Find your next match fast
               </span>
               <h1 className="hero-title mt-3 mb-3">
-                Boston
+                Your game day,
                 <br />
-                Hurricanes
+                all in one place
               </h1>
               <p className="hero-copy mb-4">
-                Browse high-demand fixtures, compare venues, and reserve tickets with a cleaner white interface, stronger spacing, and a more polished sports presentation.
+                Browse upcoming matches, check seats and prices, and lock in your spot without the usual back-and-forth.
               </p>
 
               <div className="search-card mb-4">
@@ -118,8 +118,8 @@ export default function Home() {
                 <img src="/assets/img/sport img.png" alt="Featured athlete" className="hero-visual-photo" />
                 <div className="hero-visual-overlay">
                   <span className="hero-tag mb-2">Featured Team</span>
-                  <h3>Game Day Ready</h3>
-                  <p>Fresh schedules, easier booking, and a more premium match-day feel.</p>
+                  <h3>Built for fans</h3>
+                  <p>See what is coming up, compare matches quickly, and book with confidence.</p>
                 </div>
               </div>
             </div>
@@ -130,8 +130,8 @@ export default function Home() {
           <div className="d-flex justify-content-between align-items-end flex-wrap gap-3 mb-4">
             <div>
               <span className="section-label">Now Booking</span>
-              <h2 className="section-heading">Upcoming matches that feel ready to attend</h2>
-              <p className="section-copy mb-0">Clear venue info, obvious pricing, and fewer distractions in the browsing flow.</p>
+              <h2 className="section-heading">Upcoming matches worth planning for</h2>
+              <p className="section-copy mb-0">Everything you need about the venue, timing, and seats in one place.</p>
             </div>
             <Link to="/matches" className="btn btn-ticket-primary">
               Explore schedule
@@ -187,7 +187,7 @@ export default function Home() {
                         {match.matchTime || "-"}
                       </span>
                     </div>
-                    <p className="section-copy mb-4">{match.description || "Ticket booking with live inventory and venue-first details."}</p>
+                    <p className="section-copy mb-4">{match.description || "Quick booking, live seat updates, and clear match details before you commit."}</p>
                     <div className="d-flex justify-content-between align-items-center">
                       <span className="price-text">{formatCurrency(match.ticketPrice)}</span>
                       <Link to={`/match/${match._id}`} className="btn btn-ticket-primary">
@@ -210,8 +210,8 @@ export default function Home() {
           <div className="row g-4">
             <div className="col-lg-4">
               <span className="section-label">Browse Sports</span>
-              <h2 className="section-heading">A simpler way to jump into the right category</h2>
-              <p className="section-copy">A tighter bento grid keeps the homepage focused while still surfacing the most relevant categories first.</p>
+              <h2 className="section-heading">Jump straight to the sport you care about</h2>
+              <p className="section-copy">All your favorite sports in one place, ready to browse and book.</p>
               <Link to="/matches" className="btn btn-ticket-primary mt-2">
                 Explore all sports
               </Link>
@@ -231,7 +231,7 @@ export default function Home() {
                         <div>
                           <span className="sport-bento-label">Featured sport</span>
                           <h3 className="sport-bento-title">{featuredSport.sportName}</h3>
-                          <p className="section-copy sport-bento-description mb-0">{featuredSport.description || "Browse fixtures, venues, and upcoming ticket releases in this sport."}</p>
+                          <p className="section-copy sport-bento-description mb-0">{featuredSport.description || "See fixtures, venues, and upcoming tickets for this sport at a glance."}</p>
                         </div>
                       </div>
                       <div className="sport-bento-meta">
@@ -254,7 +254,7 @@ export default function Home() {
                           </span>
                           <div className="sport-bento-card-body">
                             <h3 className="h5 text-dark mb-2">{sport.sportName}</h3>
-                            <p className="section-copy sport-bento-description sport-bento-description--compact mb-3">{sport.description || "Browse fixtures, venues, and upcoming ticket releases in this sport."}</p>
+                            <p className="section-copy sport-bento-description sport-bento-description--compact mb-3">{sport.description || "Open the latest fixtures, venue details, and ticket drops for this sport."}</p>
                             <div className="meta-row">
                               <span>{sport.totalTeams || 0} teams</span>
                               <span>{sport.matchDuration || 0} mins</span>
@@ -278,18 +278,18 @@ export default function Home() {
           <div className="row g-4">
             {[
               {
-                title: "Cleaner discovery",
-                copy: "Important information stays above the fold: venue, date, seat count, and starting price.",
+                title: "Find details quickly",
+                copy: "Venue, date, seat count, and starting price are easy to spot before you book.",
                 icon: "bi-layout-text-window-reverse",
               },
               {
-                title: "Faster comparisons",
-                copy: "Cards are easier to scan when you are deciding between cities, teams, and booking windows.",
+                title: "Compare options faster",
+                copy: "Scan nearby matches side by side and choose the one that fits your schedule.",
                 icon: "bi-grid-1x2",
               },
               {
-                title: "More trustworthy flow",
-                copy: "Readable fonts and consistent Bootstrap form controls make the whole booking journey feel more real.",
+                title: "Book with confidence",
+                copy: "Clear layouts and consistent controls make the booking flow feel simple and reliable.",
                 icon: "bi-shield-check",
               },
             ].map((item) => (

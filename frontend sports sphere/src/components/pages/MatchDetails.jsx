@@ -132,7 +132,7 @@ export default function MatchDetails() {
 
         if (!nextLock.lockId) {
           console.error("lockSeats response missing lock information", response?.data)
-          toast.error("Unable to lock seats: server returned incomplete lock details (check console)")
+          toast.error(response.data?.message || response.data?.data?.message || "Unable to lock seats")
           return
         }
 
@@ -504,7 +504,7 @@ export default function MatchDetails() {
                     <div style={{ marginTop: "auto" }}>
                       {!lockData?.lockId ? (
                         <button type="button" onClick={handleLockSeats} className="btn btn-ticket-primary w-100" disabled={locking}>
-                          {locking ? "Locking seats..." : "Lock Seats For 4 Minutes"}
+                          {locking ? "Booking seats..." : "Book Your Seats"}
                         </button>
                       ) : (
                         <div className="d-flex gap-2 flex-wrap">
